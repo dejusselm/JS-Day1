@@ -28,8 +28,8 @@ console.log("-------------------> Partie 1");
 
 console.log("Taille du tableau : ",taille);
 
-let note_mini=20;
-let note_maxi=0;
+let note_mini=notes[0];
+let note_maxi=notes[0];
 for (let i=0; i<taille; i++){
     if (notes[i]<note_mini){
         note_mini = notes[i];
@@ -40,5 +40,23 @@ for (let i=0; i<taille; i++){
 }
 console.log("Note la plus petite : ", note_mini);
 console.log("Note la plus grande : ", note_maxi);
-
 console.log(notes);
+
+console.log("");
+
+/****************************Partie 2*****************************/
+
+console.log("-------------------> Partie 2");
+
+note_mini=notes[0];
+let i_mini=0;
+for (let i=0; i<taille; i++){
+    if (notes[i]<note_mini){
+        note_mini = notes[i];
+        i_mini = i;
+    }
+}
+
+console.log("Note la plus petite : ", note_mini, " Indice : ",i_mini);
+
+console.log("");
