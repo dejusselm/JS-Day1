@@ -130,28 +130,31 @@ console.log("---Tri croissant---");
 console.log("Tableau de départ : ", notes);
 console.log("");
 
+//initialisation des variables
 i = 0;
 let j = 0;
 let verif_nb = 0;
 let ech_nb = 0;
+//parcours global du tableau
 while (i < taille) {
     let temp = notes[i];
     note_mini = notes[i];
     let i_mini = i;
+    // recherche du minimum 
     for (j = i; j < taille; j++) {
         if (notes[j] < note_mini) {
             note_mini = notes[j];
             i_mini = j;
         }
     }
+    // si la valeur la plus petite est une autre que celle de base, on échange
     if (i_mini !== i) {
         notes[i] = notes[i_mini];
         notes[i_mini] = temp;
         ech_nb++;
         console.log("( Echange ", i + 1, ") Tableau actuel : ", notes);
     }
-
-    i++;
+    i++; //incrémentation du compteur général pour passer à la note suivante
 }
 
 console.log("");
@@ -164,27 +167,32 @@ console.log("---Tri décroissant---");
 console.log("Tableau de départ : ", notes);
 console.log("");
 
+
+//initialisation des variables
 i = 0;
 verif_nb = 0;
 ech_nb = 0;
+//parcours global du tableau
 while (i < taille) {
     let temp = notes[i];
     note_maxi = notes[i];
     let i_maxi = i;
-    for (let j = i; j < taille; j++) {
+    // recherche du maximum
+    for (let j = i; j < taille; j++) { 
         verif_nb++;
         if (notes[j] > note_maxi) {
             note_maxi = notes[j];
             i_maxi = j;
         }
     }
+    // si il y a une valeur plus grande que celle de base, on l'échange avec
     if (i_maxi !== i) {
         notes[i] = notes[i_maxi];
         notes[i_maxi] = temp;
         ech_nb++;
         console.log("( Echange ", ech_nb, ") Tableau actuel : ", notes);
     }
-    i++;
+    i++;//incrémentation du compteur général pour passer à la note suivante
 }
 
 console.log("");
