@@ -63,17 +63,24 @@ console.log("");
 
 /****************************Partie 3*****************************/
 
-console.log("-------------------> Partie 3");
+console.log("-------------------> Partie 3 (commentée dans le code)" );
+console.log("Pour avoir le tableau non trié lors de la partie 5 (tableau modifié entre temps)")
 
+/*
 let temp = notes[0];
 notes[0] = notes[i_mini];
 notes[i_mini] = temp;
 
 console.log(notes);
-
+*/
 console.log("");
 
 /****************************Partie 4*****************************/
+
+console.log("-------------------> Partie 4 (commentée dans le code)");
+console.log("Pour avoir le tableau non trié lors de la partie 5 (tableau modifié entre temps)")
+
+/*
 let i = 0;
 while (i < taille) {
     let temp = notes[i];
@@ -89,5 +96,28 @@ while (i < taille) {
     notes[i_mini] = temp;
     i++;
 }
+*/
+console.log("");
 
-console.log(notes);
+/****************************Partie 5*****************************/
+
+console.log("-------------------> Partie 5 ");
+console.log("Tableau de départ : ",notes);
+
+i = 0;
+while (i < taille) {
+    let temp = notes[i];
+    note_mini = notes[i];
+    let i_mini = i;
+    for (let j = i; j < taille; j++) {
+        if (notes[j] < note_mini) {
+            note_mini = notes[j];
+            i_mini = j;
+        }
+    }
+    notes[i] = notes[i_mini];
+    notes[i_mini] = temp;
+    i++;
+}
+
+console.log("Tableau trié : ",notes);
