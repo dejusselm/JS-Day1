@@ -125,12 +125,12 @@ console.log("Tableau trié : ",notes);
 /****************************Bonus*****************************/
 
 console.log("-------------------> Bonus ");
+console.log("Tableau de départ : ", notes);
 
-// console.log("Tableau de départ : ", notes);
-
-/*
 i = 0;
-let j=0;
+let j = 0;
+let verif_nb = 0;
+let ech_nb = 0;
 while (i < taille) {
     let temp = notes[i];
     note_mini = notes[i];
@@ -141,23 +141,28 @@ while (i < taille) {
             i_mini = j;
         }
     }
-    notes[i] = notes[i_mini];
-    notes[i_mini] = temp;
-    console.log("( Echange ",i+1,") Tableau actuel : ",notes);
+    if (i_mini !== i) {
+        notes[i] = notes[i_mini];
+        notes[i_mini] = temp;
+        ech_nb++;
+        console.log("( Echange ", i + 1, ") Tableau actuel : ", notes);
+    }
+
     i++;
 }
 
 console.log("");
-console.log("Tableau trié : ",notes);
-console.log("Nombre de vérifications : ",j);
+console.log("Tableau trié : ", notes);
+console.log("Nombre de vérifications : ", j);
+console.log("Nombre d'échange : ", ech_nb);
 console.log("");
-*/
+
 
 console.log("Tableau de départ : ", notes);
 
 i = 0;
-let verif_nb = 0;
-let ech_nb=0;
+verif_nb = 0;
+ech_nb = 0;
 while (i < taille) {
     let temp = notes[i];
     note_maxi = notes[i];
