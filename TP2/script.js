@@ -125,7 +125,10 @@ console.log("Tableau trié : ",notes);
 /****************************Bonus*****************************/
 
 console.log("-------------------> Bonus ");
+
+console.log("---Tri croissant---");
 console.log("Tableau de départ : ", notes);
+console.log("");
 
 i = 0;
 let j = 0;
@@ -153,12 +156,13 @@ while (i < taille) {
 
 console.log("");
 console.log("Tableau trié : ", notes);
-console.log("Nombre de vérifications : ", j);
-console.log("Nombre d'échange : ", ech_nb);
+console.log(" - Nombre de vérifications : ", j);
+console.log(" - Nombre d'échange : ", ech_nb);
 console.log("");
 
-
+console.log("---Tri décroissant---");
 console.log("Tableau de départ : ", notes);
+console.log("");
 
 i = 0;
 verif_nb = 0;
@@ -185,6 +189,6 @@ while (i < taille) {
 
 console.log("");
 console.log("Tableau trié (décroissant): ", notes);
-console.log("Nombre de vérifications : ", verif_nb);
-console.log("Nombre d'échange : ", ech_nb);
+console.log(" - Nombre de vérifications : ", verif_nb);
+console.log(" - Nombre d'échange : ", ech_nb);
 console.log("");
