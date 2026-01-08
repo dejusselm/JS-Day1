@@ -30,6 +30,7 @@ console.log("Taille du tableau : ", taille);
 
 let note_mini = notes[0];
 let note_maxi = notes[0];
+//recherche de la note la plus petite et la note la plus grande
 for (let i = 0; i < taille; i++) {
     if (notes[i] < note_mini) {
         note_mini = notes[i];
@@ -50,7 +51,9 @@ console.log("-------------------> Partie 2");
 
 note_mini = notes[0];
 let i_mini = 0;
+//recherche du minimum
 for (let i = 0; i < taille; i++) {
+    //comparaison pour trouver la valeur la plus petite
     if (notes[i] < note_mini) {
         note_mini = notes[i];
         i_mini = i;
@@ -65,8 +68,9 @@ console.log("");
 
 console.log("-------------------> Partie 3 ");
 
-
+//création d'une variable temporaire pour y copier une des valeurs
 let temp = notes[0];
+//échange des valeurs
 notes[0] = notes[i_mini];
 notes[i_mini] = temp;
 
@@ -80,10 +84,12 @@ console.log("-------------------> Partie 4 (Partie commentée pour ne pas interf
 /*
 
 let i = 0;
+//parcours global du tableau
 while (i < taille) {
     let temp = notes[i];
     note_mini = notes[i];
     let i_mini = i;
+    //recherche du minimum
     for (let j = i; j < taille; j++) {
         if (notes[j] < note_mini) {
             note_mini = notes[j];
@@ -92,7 +98,8 @@ while (i < taille) {
     }
     notes[i] = notes[i_mini];
     notes[i_mini] = temp;
-    i++;
+    i++;  //incrémentation du compteur général pour passer à la note suivante
+}
 }
 */
 console.log("");
@@ -104,10 +111,12 @@ console.log("-------------------> Partie 5 (Partie commentée pour ne pas interf
 console.log("Tableau de départ : ",notes);
 
 i = 0;
+//parcours global du tableau
 while (i < taille) {
     let temp = notes[i];
     note_mini = notes[i];
     let i_mini = i;
+    //recherche du minimum
     for (let j = i; j < taille; j++) {
         if (notes[j] < note_mini) {
             note_mini = notes[j];
@@ -116,7 +125,8 @@ while (i < taille) {
     }
     notes[i] = notes[i_mini];
     notes[i_mini] = temp;
-    i++;
+    i++;  //incrémentation du compteur général pour passer à la note suivante
+}
 }
 
 console.log("Tableau trié : ",notes);
