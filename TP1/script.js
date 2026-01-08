@@ -48,12 +48,30 @@ group.push(student2, student3);
 
 //**************************Part 5*******************************//
 
-for (student of group) {
+/*for (student of group) {
     let avg = (student.maths + student.french) / 2;
     console.log(student.name);
     if (avg>=10){
         console.log("Admis(e)");
     } else{
         console.log("Refusé.e");
+    }
+}*/
+
+//**************************Part 6*******************************//
+
+for (student of group) {
+    let avg = (student.maths + student.french) / 2;
+    console.log(student.name);
+    if (avg >= 16) {
+        console.log("Très bien");
+    } else if (avg >= 14) {
+        console.log("Bien");
+    } else if (avg >= 12) {
+        console.log("Assez bien");
+    } else if (avg >= 10) {
+        console.log("Passable");
+    } else {
+        console.log("Insuffisant");
     }
 }
