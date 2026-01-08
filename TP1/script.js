@@ -1,5 +1,5 @@
 const classe = "B1A";
-let stud_number = 28;
+let stud_number = 3;
 let is_open = false;
 
 // console.log(classe,stud_number,is_open);
@@ -60,7 +60,7 @@ group.push(student2, student3);
 
 //**************************Part 6*******************************//
 
-for (student of group) {
+/*for (student of group) {
     let avg = (student.maths + student.french) / 2;
     console.log(student.name);
     if (avg >= 16) {
@@ -74,4 +74,19 @@ for (student of group) {
     } else {
         console.log("Insuffisant");
     }
+}*/
+
+//**************************Part 7*******************************//
+
+let i = 0;
+let count = 0;
+let stud = null;
+while (i < stud_number) {
+    stud = group[i];
+    let avg = (stud.maths + stud.french) / 2;
+    if (avg >= 10) {
+        count++;
+    }
+    i++
 }
+console.log(count);
