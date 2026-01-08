@@ -121,12 +121,12 @@ while (i < stud_number) {
 let avg = total / stud_number;
 console.log("La moyenne de la classe est de :",avg);    
 
+
 let student4 ={
     name : "Mariva",
     maths : 20,
     french : 20
 };
-
 
 i = 0;
 count = 0;
