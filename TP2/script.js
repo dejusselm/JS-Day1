@@ -63,24 +63,22 @@ console.log("");
 
 /****************************Partie 3*****************************/
 
-console.log("-------------------> Partie 3 (commentée dans le code)" );
-console.log("Pour avoir le tableau non trié lors de la partie 5 (tableau modifié entre temps)")
+console.log("-------------------> Partie 3 ");
 
-/*
+
 let temp = notes[0];
 notes[0] = notes[i_mini];
 notes[i_mini] = temp;
 
 console.log(notes);
-*/
+
 console.log("");
 
 /****************************Partie 4*****************************/
 
-console.log("-------------------> Partie 4 (commentée dans le code)");
-console.log("Pour avoir le tableau non trié lors de la partie 5 (tableau modifié entre temps)")
-
+console.log("-------------------> Partie 4 (Partie commentée pour ne pas interférer avec la suite)");
 /*
+
 let i = 0;
 while (i < taille) {
     let temp = notes[i];
@@ -101,7 +99,8 @@ console.log("");
 
 /****************************Partie 5*****************************/
 
-console.log("-------------------> Partie 5 ");
+console.log("-------------------> Partie 5 (Partie commentée pour ne pas interférer avec le bonus)");
+/*
 console.log("Tableau de départ : ",notes);
 
 i = 0;
@@ -121,3 +120,66 @@ while (i < taille) {
 }
 
 console.log("Tableau trié : ",notes);
+*/
+
+/****************************Bonus*****************************/
+
+console.log("-------------------> Bonus ");
+
+// console.log("Tableau de départ : ", notes);
+
+/*
+i = 0;
+let j=0;
+while (i < taille) {
+    let temp = notes[i];
+    note_mini = notes[i];
+    let i_mini = i;
+    for (j = i; j < taille; j++) {
+        if (notes[j] < note_mini) {
+            note_mini = notes[j];
+            i_mini = j;
+        }
+    }
+    notes[i] = notes[i_mini];
+    notes[i_mini] = temp;
+    console.log("( Echange ",i+1,") Tableau actuel : ",notes);
+    i++;
+}
+
+console.log("");
+console.log("Tableau trié : ",notes);
+console.log("Nombre de vérifications : ",j);
+console.log("");
+*/
+
+console.log("Tableau de départ : ", notes);
+
+i = 0;
+let verif_nb = 0;
+let ech_nb=0;
+while (i < taille) {
+    let temp = notes[i];
+    note_maxi = notes[i];
+    let i_maxi = i;
+    for (let j = i; j < taille; j++) {
+        verif_nb++;
+        if (notes[j] > note_maxi) {
+            note_maxi = notes[j];
+            i_maxi = j;
+        }
+    }
+    if (i_maxi !== i) {
+        notes[i] = notes[i_maxi];
+        notes[i_maxi] = temp;
+        ech_nb++;
+        console.log("( Echange ", ech_nb, ") Tableau actuel : ", notes);
+    }
+    i++;
+}
+
+console.log("");
+console.log("Tableau trié (décroissant): ", notes);
+console.log("Nombre de vérifications : ", verif_nb);
+console.log("Nombre d'échange : ", ech_nb);
+console.log("");
