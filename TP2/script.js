@@ -26,15 +26,15 @@ for (let i = 0; i < taille; i++) {
 console.log("-------------------> Partie 1");
 
 
-console.log("Taille du tableau : ",taille);
+console.log("Taille du tableau : ", taille);
 
-let note_mini=notes[0];
-let note_maxi=notes[0];
-for (let i=0; i<taille; i++){
-    if (notes[i]<note_mini){
+let note_mini = notes[0];
+let note_maxi = notes[0];
+for (let i = 0; i < taille; i++) {
+    if (notes[i] < note_mini) {
         note_mini = notes[i];
     }
-    if (notes[i]>note_maxi){
+    if (notes[i] > note_maxi) {
         note_maxi = notes[i];
     }
 }
@@ -48,16 +48,16 @@ console.log("");
 
 console.log("-------------------> Partie 2");
 
-note_mini=notes[0];
-let i_mini=0;
-for (let i=0; i<taille; i++){
-    if (notes[i]<note_mini){
+note_mini = notes[0];
+let i_mini = 0;
+for (let i = 0; i < taille; i++) {
+    if (notes[i] < note_mini) {
         note_mini = notes[i];
         i_mini = i;
     }
 }
 
-console.log("Note la plus petite : ", note_mini, " Indice : ",i_mini);
+console.log("Note la plus petite : ", note_mini, " Indice : ", i_mini);
 
 console.log("");
 
@@ -72,3 +72,22 @@ notes[i_mini] = temp;
 console.log(notes);
 
 console.log("");
+
+/****************************Partie 4*****************************/
+let i = 0;
+while (i < taille) {
+    let temp = notes[i];
+    note_mini = notes[i];
+    let i_mini = i;
+    for (let j = i; j < taille; j++) {
+        if (notes[j] < note_mini) {
+            note_mini = notes[j];
+            i_mini = j;
+        }
+    }
+    notes[i] = notes[i_mini];
+    notes[i_mini] = temp;
+    i++;
+}
+
+console.log(notes);
