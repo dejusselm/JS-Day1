@@ -60,3 +60,15 @@ for (let i=0; i<taille; i++){
 console.log("Note la plus petite : ", note_mini, " Indice : ",i_mini);
 
 console.log("");
+
+/****************************Partie 3*****************************/
+
+console.log("-------------------> Partie 3");
+
+let temp = notes[0];
+notes[0] = notes[i_mini];
+notes[i_mini] = temp;
+
+console.log(notes);
+
+console.log("");
