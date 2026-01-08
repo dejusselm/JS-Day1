@@ -16,7 +16,7 @@ let student1 = {
 
 //*************************Part 3******************************//
 
-let trio = [student1];
+let group = [student1];
 
 let student2 = {
     name : "Marine",
@@ -30,13 +30,20 @@ let student3 = {
     french : 15
 };
 
-trio.push(student2,student3);
+group.push(student2,student3);
 
-
-
-for (let i=0; i<=trio.length-1; i++){
-    console.log(i);
-    console.log(trio[i].name);
-}
+// for (let i=0; i<=group.length-1; i++){
+//     console.log(i);
+//     console.log(group[i].name);
+// }
 
 //*************************Part 4******************************//
+
+for (student of group){
+    console.log(student.name);
+    let avg = (student.maths+student.french)/2;
+    console.log("Average : ", avg);
+}
+
+
+//**************************Part 5*******************************//
