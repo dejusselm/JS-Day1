@@ -89,4 +89,42 @@ while (i < stud_number) {
     }
     i++
 }
-console.log(count);
+// console.log(count);
+
+//**************************Bonus*******************************//
+
+let total =0;
+i = 0;
+while (i < stud_number) {
+    stud = group[i];
+    let stud_avg = (stud.maths + stud.french) / 2;
+    total += stud_avg;
+    i++
+}
+let avg = total / stud_number;
+console.log("La moyenne de la classe est de :",avg);    
+
+let student4 ={
+    name : "Mariva",
+    maths : 20,
+    french : 20
+};
+
+
+i = 0;
+count = 0;
+stud = null;
+while (i < stud_number) {
+    stud = group[i];
+    let avg = (stud.maths + stud.french) / 2;
+    if (avg >= 10) {
+        count++;
+    }
+    i++
+}
+
+group.push(student4);
+
+if (count===stud_number){
+    console.log("Tout le monde est admis !")
+}
