@@ -58,7 +58,7 @@ let maxi_moyenne = eleves[0].moyenne;
 for (let i = 0; i < taille; i++) {
     //comparaison pour trouver la moyenne la plus petite
     if (eleves[i].moyenne < mini_moyenne) {
-        mini_moyenne = eleves[i].moyenne;ù
+        mini_moyenne = eleves[i].moyenne;
     }
     if (eleves[i].moyenne > maxi_moyenne){
         maxi_moyenne = eleves[i].moyenne;
