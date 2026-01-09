@@ -94,7 +94,7 @@ afficherDonnees(tab);
 /*************************************Partie 5*******************************/
 
 console.log("\n------> Partie 5");
-
+//échange de deux valeurs
 function swap(tableau, indexA, indexB) {
     let temp = tableau[indexA];
     tableau[indexA] = tableau[indexB];
@@ -117,7 +117,6 @@ function triParSelection(tableau) {
     let ech_nb = 0;
     //parcours global du tableau
     while (i < tableau.length) {
-        let temp = tableau[i];
         moyenne_mini = tableau[i].moyenne;
         let i_mini = i;
         // recherche du minimum 
