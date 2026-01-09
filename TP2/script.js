@@ -162,7 +162,7 @@ while (i < taille) {
         notes[i] = notes[i_mini];
         notes[i_mini] = temp;
         ech_nb++;
-        console.log("( Echange ", i + 1, ") Tableau actuel : ", notes);
+        console.log("( Echange ", ech_nb, ") Tableau actuel : ", notes);
     }
     i++; //incrémentation du compteur général pour passer à la note suivante
 }
