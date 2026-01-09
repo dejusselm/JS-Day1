@@ -38,7 +38,8 @@ console.log(tab, "\n");
 console.log("\n------> Partie 2");
 
 function afficherEleves(tableau) {
-    for (let i = 0; i < tableau.length; i++) {
+    //parcours des élèves
+    for (let i = 0; i < tableau.length; i++) { 
         console.log("Eleve : ", tableau[i].nom, " |  Moyenne : ", tableau[i].moyenne);
     }
 }
@@ -52,6 +53,7 @@ console.log("\n------> Partie 3");
 function trouverMoyenneMin(tableau, indexDepart) {
     let mini_moyenne = tableau[indexDepart].moyenne;
     let i_mini = indexDepart;
+    //pour chaque élève
     for (let i = indexDepart; i < tableau.length; i++) {
         //comparaison pour trouver la moyenne la plus petite
         if (tableau[i].moyenne < mini_moyenne) {
@@ -71,6 +73,7 @@ console.log("\n------> Partie 4");
 function trouverMoyenneMax(tableau, indexDepart) {
     let maxi_moyenne = tableau[indexDepart].moyenne;
     let i_maxi = indexDepart;
+    //pour chaque élève
     for (let i = indexDepart; i < tableau.length; i++) {
         //comparaison pour trouver la moyenne la plus petite
         if (tableau[i].moyenne > maxi_moyenne) {
