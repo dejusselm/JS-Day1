@@ -234,5 +234,3 @@ console.log("");
 console.log(" - Nombre de vérifications : ", j);
 console.log(" - Nombre d'échange : ", ech_nb);
 console.log("");
-
-
