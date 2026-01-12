@@ -1,0 +1,1 @@
+//taille de la map 600*600px
