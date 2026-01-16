@@ -47,7 +47,7 @@ class Player {
         this.currentDeathSpriteStep = 0;
         this.deathSpriteDuration = 5;
     }
-
+ 
     update(updateData) {
 
         // Update authoritative position
