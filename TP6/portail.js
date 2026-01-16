@@ -31,7 +31,6 @@ for (let i = 1; i <= 29; i++) {
     let context = canvas.getContext('2d');
     const img = new Image();
 
-
     img.onload = function () {
         context.drawImage(
             img,
@@ -43,9 +42,12 @@ for (let i = 1; i <= 29; i++) {
 }
 
 document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
     let formData = new FormData(document.querySelector('form'));
     const data = Object.fromEntries(formData);
     let number = data["sprite"];
-    delete data.sprite;
-    data["skinPath"] = `assets/${number}.png`;
+    localStorage.setItem("name", data.name);
+    localStorage.setItem("url", data.url);
+    localStorage.setItem("skinPath", `assets/${number}.png`);
+    console.log(data);
 });
