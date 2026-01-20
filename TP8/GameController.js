@@ -80,10 +80,9 @@ class GameController {
     initSocket() {
         this.socket.onopen = () => {
             console.log("Connected to server");
-
             this.socket.send(JSON.stringify({
                 name: this.formData.name,
-                spritePath: this.spritePath
+                skinPath: this.formData.skinPath
             }));
         };
 
@@ -101,8 +100,6 @@ class GameController {
                     type: "input",
                     input: this.inputState
                 }));
-            } else {
-                return;
             }
         }, this.SERVER_INTERVAL);
     }
@@ -112,6 +109,7 @@ class GameController {
     loop(timestamp) {
         // console.log(this.inputState);
         // Request the next frame
+
         requestAnimationFrame(this.loop);
     }
 
