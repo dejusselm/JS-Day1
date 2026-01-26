@@ -18,6 +18,11 @@ class Player {
         this.renderX = position[0];
         this.renderY = position[1];
 
+        this.PrevX = this.renderX;
+        this.PrexY = this.renderY;
+        this.NewX = 0;
+        this.NewY = 0;
+
         // --- Stats ---
         this.lvl = 1;
         this.hp = 100;
@@ -30,6 +35,7 @@ class Player {
         this.isAttacking = false;
         this.isDying = false;
         this.isDead = false;
+        this.deathTime = "None";
 
         // --- Animations (remains non affected by server updates, only concernes frontend logic) ---
         this.walkSpriteIndex = 0;
@@ -47,11 +53,18 @@ class Player {
         this.currentDeathSpriteStep = 0;
         this.deathSpriteDuration = 5;
     }
- 
+
+    interpolate(alpha) {
+        this.renderX = this.PrevX+(this.NewX-this.PrevX)*alpha;
+        this.renderY = this.PrevY+(this.NewY-this.PrevY)*alpha;
+    }
+
     update(updateData) {
 
         // Update authoritative position
-        [this.renderX, this.renderY] = updateData.position;
+        this.PrevX=this.NewX;
+        this.PrevY=this.NewY;
+        [this.NewX, this.NewY] = updateData.position;
 
         // Update stats
         this.name = updateData.name
@@ -67,6 +80,8 @@ class Player {
         this.isWalking = updateData.isWalking;
         this.isDying = updateData.isDying;
         this.skinPath = updateData.skinPath;
+
+
     }
 
     animate() {
@@ -95,7 +110,7 @@ class Player {
             // Reset the walking animation variables as we may have interrupted a walking animation
             this.currentWalkSpriteStep = 0;
             this.walkSpriteIndex = 0;
-            
+
             // Increment the current attack sprite step to display the current attacking animation sprite for the right number of frames
             this.currentAttackSpriteStep++;
             // If we displayed it for long enough
@@ -105,7 +120,7 @@ class Player {
                 this.attackSpriteIndex++;
             }
             // If we reach the last sprite in the animation and try going for the next one
-            if (this.attackSpriteIndex >= this.attackSpritesNumber){
+            if (this.attackSpriteIndex >= this.attackSpritesNumber) {
                 /*
                     We reset our sprite index to 0 for the next attack animation.
                     This reset does not serve a looping purpose like for the walking animation ;
@@ -117,7 +132,7 @@ class Player {
                     The only exception would be for the server to maintain isAttacking at true even after the end of the animation.
                     This is not supposed to happen as i programmed the server to maintain isAttacking at true for a very short amount of time.
                 */
-                
+
                 this.attackSpriteIndex = 0;
             }
         }

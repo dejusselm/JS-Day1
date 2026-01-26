@@ -6,7 +6,9 @@ class GameController {
         // Duration between two server ticks in milliseconds
         this.SERVER_INTERVAL = 1000 / this.SERVER_TICK_RATE;
 
-        this.gameInfo = new Game();
+        this.lastServerUpdate = performance.now();
+
+        this.game = new Game();
 
         this.formData = {
             name: localStorage.getItem("name"),
@@ -22,9 +24,9 @@ class GameController {
             attack: false
         }
 
-        this.view = new GameView(this.gameInfo,this);
+        this.view = new GameView(this.game, this);
 
-        this.socket = new WebSocket("ws://localhost:8000/ws");
+        this.socket = new WebSocket(this.formData.url);
 
         this.initInput();
         this.initSocket();
@@ -79,10 +81,10 @@ class GameController {
         });
     }
 
+
     initSocket() {
         this.socket.onopen = () => {
             console.log("Connected to server");
-
             this.socket.send(JSON.stringify({
                 name: this.formData.name,
                 skinPath: this.formData.skinPath
@@ -90,9 +92,10 @@ class GameController {
         };
 
         this.socket.onmessage = (event) => {
+            this.lastServerUpdate = performance.now();
             console.log("Message received");
             const msg = JSON.parse(event.data);
-            this.gameInfo.update(msg);
+            this.game.update(msg);
         };
     }
 
@@ -110,8 +113,18 @@ class GameController {
 
     // === Main render loop ===
     loop(timestamp) {
+        if(!this.game.isRunning){
+            this.view.reset();
+        }
         // console.log(this.inputState);
-
+        const alpha = Math.min((timestamp - this.lastServerUpdate) / this.SERVER_INTERVAL, 1);
+        for (const playerId in this.game.players) {
+            let player = this.game.players[playerId];
+            if(player.isDead && player.deathTime==="None"){
+                player.deathTime = this.game.timer;
+            }
+            player.interpolate(alpha);
+        }
         this.view.render();
 
         // Request the next frame

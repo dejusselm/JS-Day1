@@ -33,7 +33,7 @@ class Game:
                 player.current_attack_cooldown = max(0, player.current_attack_cooldown - TICK_DURATION)
 
             # HP regen
-            if player.hp < player.max_hp:
+            if player.hp < player.max_hp and not player.is_dead:
                player.hp += player.hp_regen_rate * TICK_DURATION
             
 
@@ -49,12 +49,10 @@ class Game:
                 player = self.players[key]
                 if player.is_dead == False:
                     alive_players += 1
-
         if alive_players > 1:
             self.over = False
         else:
             self.over = True
-
 
 
     async def broadcast_state(self):
@@ -68,6 +66,9 @@ class Game:
             }
         }
 
+        for player_id in self.players:
+            player = self.players[player_id]
+
         for ws in self.connections.values():
             await ws.send_json(state)
 
@@ -76,8 +77,10 @@ class Game:
                 self.remove_player(player.id)
 
 
-    def add_player(self, websocket, name, skin_id):
-        player = Player(name, skin_id)
+    def add_player(self, websocket, name, skin_path):
+        if skin_path.startswith("../"):
+            skin_path = skin_path[1:]
+        player = Player(name, skin_path)
         self.players[player.id] = player
         self.connections[player.id] = websocket
         return player
@@ -124,7 +127,7 @@ class Game:
 
     def handle_input(self, player_id, data):
         player = self.players.get(player_id)
-        if not player:
+        if not player or player.is_dead:
             return
 
         input = data.get("input")
@@ -138,21 +141,25 @@ class Game:
             player.is_walking = False
         elif input.get("up"):
             player.y -= player.speed * TICK_DURATION
+            player.y = max(min(player.y, 1.0), 0.0)
             player.direction = 0
             player.is_walking = True
             player.is_attacking = False
         elif input.get("down"):
             player.y += player.speed * TICK_DURATION
+            player.y = max(min(player.y, 1.0), 0.0)
             player.direction = 2
             player.is_walking = True
             player.is_attacking = False
         elif input.get("right"):
             player.x += player.speed * TICK_DURATION
+            player.x = max(min(player.x, 1.0), 0.0)
             player.direction = 1
             player.is_walking = True
             player.is_attacking = False
         elif input.get("left"):
             player.x -= player.speed * TICK_DURATION
+            player.x = max(min(player.x, 1.0), 0.0)
             player.direction = 3
             player.is_walking = True
             player.is_attacking = False

@@ -26,9 +26,6 @@ async def websocket_endpoint(ws: WebSocket):
 
     print(name, skin_path)
 
-    if skin_path.startswith("/"):
-        skin_path = skin_path[1:]
-
     player = game.add_player(ws, name, skin_path)
     player_id = player.id
 

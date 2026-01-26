@@ -46,8 +46,8 @@ document.querySelector("form").addEventListener("submit", function (e) {
     let formData = new FormData(document.querySelector('form'));
     const data = Object.fromEntries(formData);
     let number = data["sprite"];
-    localStorage.setItem("name", "a");
-    localStorage.setItem("url", "a");
-    localStorage.setItem("skinPath", `assets/4.png`);
+    localStorage.setItem("name", data["name"]);
+    localStorage.setItem("url", data["url"]);
+    localStorage.setItem("skinPath", `assets/${number}.png`);
     window.location.href = "game.html";
 });
