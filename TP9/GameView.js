@@ -89,13 +89,16 @@ class GameView {
             cropY = 1280;
             cropX = player.deathSpriteIndex * 64;
         }
-        this.ctx.drawImage(
-            sprite,
-            cropX, cropY, cropSize, cropSize,
-            player.renderX * 600 - (cropSize / 2),
-            player.renderY * 600 - (cropSize / 2), cropSize, cropSize
-        );
-        this.drawPlayerHud(player);
+        if (!player.isDead) {
+            this.ctx.drawImage(
+                sprite,
+                cropX, cropY, cropSize, cropSize,
+                player.renderX * 600 - (cropSize / 2),
+                player.renderY * 600 - (cropSize / 2), cropSize, cropSize
+            );
+            this.drawPlayerHud(player);
+        }
+
     }
 
     drawPlayerHud(player) {
@@ -119,15 +122,15 @@ class GameView {
     }
 
     drawHud() {
-        this.ctx.font = "60px monospace";
+        this.ctx.font = "50px monospace";
         this.ctx.textAlign = "center";
         this.ctx.fillStyle = "white";
         let timer = Math.floor(this.game.timer);
         if (timer > 60) {
             let min = Math.floor(this.game.timer / 60);
-            this.ctx.fillText(`| ${min}"${timer % 60} |`, 300, 70, 300);
+            this.ctx.fillText(`${min}"${timer % 60}`, 300, 70, 300);
         } else {
-            this.ctx.fillText(`| 0"${timer} |`, 300, 70, 250);
+            this.ctx.fillText(`0"${timer} `, 300, 70, 250);
         }
     }
 
@@ -186,6 +189,8 @@ class GameView {
             let player = newArray[playerI];
             liArray[playerI].innerHTML = `Lvl.${player.lvl} ${player.name}&nbsp${player.deathTime}`;
         };
+        this.ctx.font= "15px monospace";
+        this.ctx.fillText(`${aliveArray.length} / ${newArray.length} alive players`, 100,30);
     }
 
     reset() {

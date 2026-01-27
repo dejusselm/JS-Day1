@@ -10,8 +10,13 @@ body {
     gap:10px;
 }
 
+canvas{
+    height: 600px;
+}
 
 ul {
+    max-width: 200px;
+    max-height: 550px;
     text-align: center;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -23,6 +28,7 @@ ul {
     background-color: rgba(255, 255, 255, 0.384);
     height: 80%;
     overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 ul li {
