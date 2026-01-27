@@ -7,6 +7,8 @@ class GameView {
         this.game = game;
         this.gameControl = gameControl;
         this.backGame = gameControl.gameInfo;
+        this.background = new Image();
+        this.background.src = "assets/truc.gif";
         this.sprites = {};
 
         for (let i = 1; i < 30; i++) {
@@ -17,14 +19,8 @@ class GameView {
 
     }
 
-    clear() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-
     drawBackground() {
-        const background = new Image();
-        background.src = "assets/truc.gif";
-        this.ctx.drawImage(background, 0, 0, 600, 600, 0, 0, 600, 600);
+        this.ctx.drawImage(this.background, 0, 0, 600, 600, 0, 0, 600, 600);
         this.ctx.strokeRect(0, 0, 600, 600);
     }
 
@@ -99,9 +95,7 @@ class GameView {
             player.renderX * 600 - (cropSize / 2),
             player.renderY * 600 - (cropSize / 2), cropSize, cropSize
         );
-        if (!player.isDead) {
-            this.drawPlayerHud(player);
-        }
+        this.drawPlayerHud(player);
     }
 
     drawPlayerHud(player) {
@@ -118,11 +112,10 @@ class GameView {
 
         this.ctx.fillStyle = "rgb(41, 88, 231)";
         this.ctx.fillRect(player.renderX * 600 - 30, player.renderY * 600 + 35,
-            60, 8);
+            60, 5);
         this.ctx.fillStyle = "rgb(24, 37, 78)";
         this.ctx.fillRect(player.renderX * 600 - 30, player.renderY * 600 + 35,
-            60 * (1 - player.currentAttackCooldown / player.attackCooldown), 8);
-
+            60 * (1 - player.currentAttackCooldown / player.attackCooldown), 5);
     }
 
     drawHud() {
@@ -136,7 +129,6 @@ class GameView {
         } else {
             this.ctx.fillText(`| 0"${timer} |`, 300, 70, 250);
         }
-
     }
 
     win() {
@@ -204,16 +196,16 @@ class GameView {
     }
 
     render() {
-        this.clear();
         this.drawBackground();
         this.initializeRanking();
         this.ranking();
         if (!this.game.isOver) {
             for (const playerId in this.game.players) {
                 let player = this.game.players[playerId];
-                this.drawPlayer(player);
+                if (!player.isDead) {
+                    this.drawPlayer(player);
+                }
             }
-
             this.drawHud();
         } else {
             this.win();

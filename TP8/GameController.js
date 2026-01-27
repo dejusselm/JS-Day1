@@ -80,6 +80,7 @@ class GameController {
     initSocket() {
         this.socket.onopen = () => {
             console.log("Connected to server");
+
             this.socket.send(JSON.stringify({
                 name: this.formData.name,
                 skinPath: this.formData.skinPath

@@ -121,7 +121,7 @@ class GameController {
         for (const playerId in this.game.players) {
             let player = this.game.players[playerId];
             if(player.isDead && player.deathTime==="None"){
-                player.deathTime = this.game.timer;
+                player.deathTime = Math.round(this.game.timer*100)/100;
             }
             player.interpolate(alpha);
         }

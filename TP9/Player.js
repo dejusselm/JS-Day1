@@ -46,7 +46,7 @@ class Player {
         this.attackSpriteIndex = 0;
         this.attackSpritesNumber = 6;
         this.currentAttackSpriteStep = 0;
-        this.attackSpriteDuration = 0;
+        this.attackSpriteDuration = 2;
 
         this.deathSpriteIndex = 0;
         this.deathSpritesNumber = 6;
