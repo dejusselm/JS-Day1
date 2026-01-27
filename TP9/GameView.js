@@ -85,7 +85,8 @@ class GameView {
                 cropX = player.attackSpriteIndex * 128;
             }
 
-        } else if (player.isDying) {
+        }
+        if (player.isDying) {
             cropY = 1280;
             cropX = player.deathSpriteIndex * 64;
         }
@@ -142,7 +143,7 @@ class GameView {
             }
         }
         const sprite = this.sprites[winner.skinPath];
-        this.ctx.font = "15px monospace";
+        this.ctx.font = "80px monospace";
         this.ctx.textAlign = "center";
         this.ctx.strokeText(`${winner.name} won !`,
             0.5 * 600, 0.5 * 600 - 35, 1000);
