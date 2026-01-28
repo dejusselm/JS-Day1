@@ -1,5 +1,7 @@
-class GameController {
-    constructor() {
+
+
+export default class GameController {
+    constructor(game, gameView) {
 
         // Server sends updates at 20 ticks per second
         this.SERVER_TICK_RATE = 20;
@@ -8,7 +10,7 @@ class GameController {
 
         this.lastServerUpdate = performance.now();
 
-        this.game = new Game();
+        this.game = game;
 
         this.formData = {
             name: localStorage.getItem("name"),
@@ -24,7 +26,7 @@ class GameController {
             attack: false
         }
 
-        this.view = new GameView(this.game, this);
+        this.view = gameView;
 
         this.socket = new WebSocket(this.formData.url);
 
@@ -136,4 +138,4 @@ class GameController {
 
 // === Start the game controller by instantiating the GameController class ===
 // This line will execute the constructor (e.g, launch the frontend)
-new GameController();
+// new GameController();

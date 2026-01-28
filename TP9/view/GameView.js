@@ -1,12 +1,10 @@
-class GameView {
-    constructor(game, gameControl) {
+export default class GameView {
+    constructor(game) {
         this.canvas = document.querySelector("canvas");
         this.canvas.width = 600;
         this.canvas.height = 600;
         this.ctx = this.canvas.getContext("2d");
         this.game = game;
-        this.gameControl = gameControl;
-        this.backGame = gameControl.gameInfo;
         this.background = new Image();
         this.background.src = "assets/truc.gif";
         this.sprites = {};
