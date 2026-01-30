@@ -1,4 +1,4 @@
-import Player from "../controler/Player.js";
+import Player from "./Player.js";
 
 export default class Game {
    constructor() {

@@ -64,7 +64,6 @@ async function loadPlayerStats(name) {
         let liArray = document.querySelectorAll('li');
         let i = 0;
         for (const key of Object.keys(data)) {
-            console.log(key);
             if (key !== "gamesPlayed") {
                 liArray[i].innerHTML = ` ${key} : ${data[key]}`;
                 i++;
@@ -78,9 +77,10 @@ async function loadPlayerStats(name) {
 
 async function loadRanking() {
     const container = document.getElementById("ranking");
+    container.innerText = "RANKING";
     players.forEach(player => {
         let el = document.createElement("li");
-        let text = "";
+        let text = `${player[overallRanking]}`;
         for (const key of Object.keys(player)) {
             text += `  ${player[key]}  `;
         }

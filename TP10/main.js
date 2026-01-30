@@ -1,4 +1,4 @@
-import Game from "./data/Game.js";
+import Game from "./model/Game.js";
 import Gameview from "./view/GameView.js";
 import GameController from "./controler/GameController.js";
 
