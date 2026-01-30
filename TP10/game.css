@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5em;
+    padding-bottom: 2.9em;
+    background: #88cf78;
+    background: linear-gradient(205deg, rgb(197, 228, 181) 0%, rgb(183, 213, 144) 50%, rgb(242, 207, 70) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    gap:10px;
+}
+
+canvas{
+    height: 600px;
+}
+
+ul {
+    max-width: 200px;
+    max-height: 550px;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: rgb(0, 0, 0) solid 1px;
+    width: 100%;
+    margin-top: 15%;
+    font-size: 1.5em;
+    font-family: monospace;
+    background-color: rgba(255, 255, 255, 0.384);
+    height: 80%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+ul li {
+    width:75%;
+    padding: 1em 1em 0 1em;
+    text-align: left;
+    list-style: none;
+    font-family: monospace;
+}
+
+select{
+    color:white;
+}

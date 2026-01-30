@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <form id="form">
+            <div id="ipDiv">
+                <h2>Enter an IP</h2>
+                <input type="text" name="ip" placeholder="IP:PORT" required></input>
+            </div>
+            <div id="buttonDiv">
+                <input type="submit" name="button" id="ipButton" value="Submit IP" />
+            </div>
+        </form>
+        <form id="players">
+            <div>
+                <label>Choose a player : </label>
+                <select name="playerName">
+                    <option value="DragonOfDojima">DragonOfDojima</option>
+                    <option value="O">O</option>
+                </select>
+            </div>
+
+        </form>
+        <div id="playerStats">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+
+            </ul>
+        </div>
+        <div>
+            <ul id="ranking">Ranking :</ul>
+        </div>
+
+    </main>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
